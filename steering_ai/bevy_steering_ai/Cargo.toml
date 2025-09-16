@@ -1,0 +1,9 @@
+[package]
+name = "bevy_steering_ai"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = "0.12.1"
+bevy_panorbit_camera = "0.11.0"
+rand = "0.8.5"
