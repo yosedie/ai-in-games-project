@@ -1,0 +1,221 @@
+# Rust Installation Tutorial & Project Setup
+
+## 🔧 1. Install Rust (Windows)
+
+### A. Download & Install Rust
+1. Open a browser at: **https://rustup.rs/**
+2. Download **rustup-init.exe**
+3. Run the file → select **"1) Proceed with installation (default)"**
+4. Wait for it to complete
+
+### B. Verify Installation
+Open **PowerShell** or **Command Prompt**:
+```bash
+rustc --version
+cargo --version
+```
+
+**Expected Output:**
+```
+rustc 1.83.0 (or higher)
+cargo 1.83.0 (or higher)
+```
+
+***
+
+## 🛠️ 2. Install C++ Build Tools (Required for Windows)
+
+Rust requires a C++ compiler on Windows.
+
+### Option A: Visual Studio Build Tools (Recommended)
+1. Download: **https://visualstudio.microsoft.com/visual-cpp-build-tools/**
+2. Install → Select **"Desktop development with C++"**
+3. Total size: ~7GB
+
+### Option B: Visual Studio Community (Full)
+1. Download: **https://visualstudio.microsoft.com/downloads/**
+2. Install → Select the **"Desktop development with C++"** workload
+
+***
+
+## 🎮 3. Install GPU Drivers (For 3D Rendering)
+
+You already have:
+- **NVIDIA GeForce RTX 5070 Ti** → Driver 581.42 ✅
+- Detected in Vulkan ✅
+
+**If you haven't updated yet/want to update:**
+- NVIDIA: https://www.nvidia.com/Download/index.aspx
+- AMD: https://www.amd.com/en/support
+
+***
+
+## 📦 4. Create & Setup Project
+
+### Step 1: Create a Project Folder
+```bash
+cd C:\Users\v\Downloads\git\ai-in-games-project
+cargo new q_l_rl
+cd q_l_rl
+```
+
+**Folder structure formed:**
+```
+q_l_rl/
+├── Cargo.toml
+└── src/ 
+└── main.rs
+```
+
+### Step 2: Edit `Cargo.toml`
+Open the `Cargo.toml` file with an editor (VSCode/Notepad++), replace the contents:
+
+```toml
+[package]
+name = "q_l_rl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = "0.11"
+rand = "0.8"
+```
+
+### Step 3: Copy Code to `src/main.rs`
+1. Open `src/main.rs`
+2. Delete all default contents
+3. Paste the complete Q-Learning code (800+ lines)
+4. Save the file
+
+### Step 4: First Build (Long!)
+```bash
+cargo build --release
+```
+
+**This will:**
+- Download Bevy dependencies (~200MB)
+- Compile all libraries
+- **Time: 5-15 minutes the first time**
+
+**Progress indicator:**
+```
+Compiling bevy v0.11.0
+Compiling wgpu v0.16.0
+...
+```
+
+### Step 5: Run Games
+```bash
+cargo run --release
+```
+
+**Or if you want dev mode (fast compilation but slow performance):**
+```bash
+cargo run
+```
+
+***
+
+## ⚙️ 5. Optional: Install Editor
+
+### VSCode (Recommended)
+1. Download: **https://code.visualstudio.com/**
+2. Install extensions: 
+- **rust-analyzer** (auto-complete & syntax) 
+- **Even Better TOML** (for Cargo.toml)
+
+Open the project folder:
+```bash
+code .
+```
+
+***
+
+## 🚨 Common Installation Issues
+
+### Issue 1: "error: linker `link.exe` not found"
+**Fix**: Install Visual Studio Build Tools (step #2)
+
+### Issue 2: Cargo command not found
+**Fix**: Restart terminal/PowerShell after installing Rust
+
+### Issue 3: Bevy compile error
+**Fix**: Rust Updates:
+```bash
+rustup update
+```
+
+### Issue 4: GPU/Vulkan error while running
+**Fix**: Update GPU driver to latest version
+
+***
+
+## 📊 Disk Space Requirements
+
+| Items | Size |
+|------|------|
+| Rust installer | 400MB |
+| VS Build Tools | 6-8GB |
+| Project dependencies | 2-3GB |
+| Compiled binary | 100-200MB |
+| **Total** | **~9-12GB** |
+
+***
+
+## ✅ Installation Checklist
+
+```bash
+# 1. Check Rust
+rustc --version
+cargo --version
+
+# 2. Check the C++ compiler
+cl.exe
+# Or try compiling a test project:
+cargo new test_project
+cd test_project
+cargo build
+
+# 3. Check GPU (optional, check during run)
+# Will appear on the console when the game is running
+
+# 4. Create a Q-Learning project
+cd C:\Users\v\Downloads\git\ai-in-games-project
+cargo new q_l_rl
+cd q_l_rl
+
+# 5. First build
+cargo build --release
+
+# 6. Run!
+cargo run --release
+```
+
+***
+
+## 🎯 Expected First Run Output
+
+```
+PS C:\...\q_l_rl> cargo run --release 
+Compiling q_l_rl v0.1.0 
+Finished release [optimized] target(s) in 1.2s 
+Running `target\release\q_l_rl.exe`
+
+=== Q-Learning with HP System & Animations ===
+
+=== MAP ===
+S . . . . . . 1 2 .
+█ . . . . . . . . .
+...
+
+Training...
+Episode 100/1000, Total Reward: 78.00
+...
+
+2025-11-13T... INFO bevy_winit::system: Creating new window...
+2025-11-13T... INFO bevy_render::renderer: AdapterInfo { name: "NVIDIA GeForce RTX 5070 Ti Laptop GPU" ...
+
+→ Episode 1000: 16 steps
+```
+
+**Then the game window will appear!** 🎮
