@@ -1,0 +1,7 @@
+https://ieeexplore.ieee.org/document/488968
+Kennedy, J., & Eberhart, R. (1995). 
+"Particle swarm optimization"
+Proceedings of ICNN'95 - International Conference on Neural Networks, 
+Vol. 4, pp. 1942-1948.
+IEEE.
+DOI: 10.1109/ICNN.1995.488968
